@@ -1,0 +1,16 @@
+.layoutNavbar {
+  display: flex;
+  justify-content: space-between;
+  background: #ffffff !important;
+  padding: 0 30px !important;
+  border-bottom: 1px solid #f0f2f5;
+  .trigger {
+    font-size: 18px;
+    line-height: 64px;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+  .trigger:hover {
+    color: #1890ff;
+  }
+}
