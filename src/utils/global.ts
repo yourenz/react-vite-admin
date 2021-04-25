@@ -1,1 +1,1 @@
-export const basename = 'dorbas-web'
+export const basename = 'react-vite-admin'
