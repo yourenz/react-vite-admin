@@ -6,12 +6,12 @@ import { defineConfig } from 'vite'
 import viteCompression from 'vite-plugin-compression'
 import styleImport from 'vite-plugin-style-import'
 
-import pkg from './package.json'
+import { basename } from './src/utils/global'
 
 const themeVariables = lessToJS(fs.readFileSync(path.resolve(__dirname, './src/style/antd-variables.less'), 'utf8'))
 
 export default defineConfig({
-  base: pkg.name,
+  base: basename,
   plugins: [
     reactRefresh(),
     styleImport({
