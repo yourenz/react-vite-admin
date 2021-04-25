@@ -1,10 +1,11 @@
 import { HomeOutlined } from '@ant-design/icons'
 import { Layout, Menu } from 'antd'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useHistory, useLocation } from 'react-router-dom'
 
 import routes from '@/route'
 import { useAppSelector } from '@/store'
+import { basename } from '@/utils/global'
 
 import styles from './index.module.scss'
 
@@ -18,6 +19,11 @@ const SideBar = (): JSX.Element => {
   const history = useHistory()
   const { pathname } = useLocation()
   const { collapsed } = useAppSelector((state) => state.layoutReducer)
+  const [currentPath, setCurrentPath] = useState<string>(pathname)
+
+  useEffect(() => {
+    setCurrentPath(pathname)
+  }, [pathname])
 
   const onOpenChange = (keys: React.Key[]): void => {
     const copyKey = keys as string[]
@@ -29,27 +35,23 @@ const SideBar = (): JSX.Element => {
     }
   }
 
-  const handleClick = (path: string, routeItem: RouteObj[] | undefined) => {
-    if (routeItem?.length) return
-    history.push(path)
+  const handleClick = (item: RouteObj) => {
+    if (item.path === currentPath) return
+    window.document.title = `${item.name} | ${basename}`
+    history.push(item.path)
   }
 
   const deepRoute = (menuData: RouteObj[]) => {
     return menuData.map((item) => {
       if (!item.children?.length) {
         return (
-          <Menu.Item key={item.path} icon={<HomeOutlined />} onClick={() => handleClick(item.path, item.children)}>
+          <Menu.Item key={item.path} icon={<HomeOutlined />} onClick={() => handleClick(item)}>
             {item.name}
           </Menu.Item>
         )
       } else {
         return (
-          <SubMenu
-            key={item.path}
-            title={item.name}
-            icon={<HomeOutlined />}
-            onTitleClick={() => handleClick(item.path, item.children)}
-          >
+          <SubMenu key={item.path} title={item.name} icon={<HomeOutlined />}>
             {deepRoute(item.children)}
           </SubMenu>
         )
@@ -60,7 +62,7 @@ const SideBar = (): JSX.Element => {
   return (
     <Sider className={styles.layoutSidebar} trigger={null} collapsible collapsed={collapsed}>
       <div className={styles.logo} />
-      <Menu theme='dark' mode='inline' openKeys={openKeys} defaultSelectedKeys={[pathname]} onOpenChange={onOpenChange}>
+      <Menu theme='dark' mode='inline' openKeys={openKeys} selectedKeys={[currentPath]} onOpenChange={onOpenChange}>
         {deepRoute(filterRoute)}
       </Menu>
     </Sider>
