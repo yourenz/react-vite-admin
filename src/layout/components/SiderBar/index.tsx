@@ -1,6 +1,6 @@
 import { HomeOutlined } from '@ant-design/icons'
 import { Layout, Menu } from 'antd'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useHistory, useLocation } from 'react-router-dom'
 
 import routes from '@/route'
@@ -19,11 +19,6 @@ const SideBar = (): JSX.Element => {
   const history = useHistory()
   const { pathname } = useLocation()
   const { collapsed } = useAppSelector((state) => state.layoutReducer)
-  const [currentPath, setCurrentPath] = useState<string>(pathname)
-
-  useEffect(() => {
-    setCurrentPath(pathname)
-  }, [pathname])
 
   const onOpenChange = (keys: React.Key[]): void => {
     const copyKey = keys as string[]
@@ -36,7 +31,7 @@ const SideBar = (): JSX.Element => {
   }
 
   const handleClick = (item: RouteObj) => {
-    if (item.path === currentPath) return
+    if (item.path === pathname) return
     window.document.title = `${item.name} | ${basename}`
     history.push(item.path)
   }
@@ -62,7 +57,7 @@ const SideBar = (): JSX.Element => {
   return (
     <Sider className={styles.layoutSidebar} trigger={null} collapsible collapsed={collapsed}>
       <div className={styles.logo} />
-      <Menu theme='dark' mode='inline' openKeys={openKeys} selectedKeys={[currentPath]} onOpenChange={onOpenChange}>
+      <Menu theme='dark' mode='inline' openKeys={openKeys} selectedKeys={[pathname]} onOpenChange={onOpenChange}>
         {deepRoute(filterRoute)}
       </Menu>
     </Sider>
