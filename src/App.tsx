@@ -6,13 +6,14 @@ import { PersistGate } from 'redux-persist/integration/react'
 
 import { persistor, store } from '@/store'
 
+import pkg from '../package.json'
 import Layout from './layout'
 
 const App: React.FC = (): JSX.Element => {
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <Router basename={'react-vite-admin'}>
+        <Router basename={pkg.name}>
           <Layout />
         </Router>
       </PersistGate>
