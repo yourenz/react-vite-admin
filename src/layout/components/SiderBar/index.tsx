@@ -1,10 +1,10 @@
 import { HomeOutlined } from '@ant-design/icons'
 import { Layout, Menu } from 'antd'
-import { useState } from 'react'
 import { useHistory, useLocation } from 'react-router-dom'
 
 import routes from '@/route'
-import { useAppSelector } from '@/store'
+import { useAppDispatch, useAppSelector } from '@/store'
+import { handleOpenkeys } from '@/store/reducer/layoutReducer'
 import { basename } from '@/utils/global'
 
 import styles from './index.module.scss'
@@ -15,18 +15,18 @@ const { SubMenu } = Menu
 const SideBar = (): JSX.Element => {
   const filterRoute = routes.filter((item) => !item.hidden)
   const rootSubmenuKeys = filterRoute.map((item) => item.path)
-  const [openKeys, setOpenKeys] = useState<string[]>([rootSubmenuKeys[0]])
   const history = useHistory()
   const { pathname } = useLocation()
-  const { collapsed } = useAppSelector((state) => state.layoutReducer)
+  const { collapsed, openKeys } = useAppSelector((state) => state.layoutReducer)
+  const dispatch = useAppDispatch()
 
   const onOpenChange = (keys: React.Key[]): void => {
     const copyKey = keys as string[]
-    const latestOpenKey = copyKey.find((key: string) => openKeys.indexOf(key) === -1) || ''
-    if (rootSubmenuKeys.indexOf(latestOpenKey) === -1) {
-      setOpenKeys(copyKey)
+    const latestOpenKey = copyKey[copyKey.length - 1]
+    if (!rootSubmenuKeys.includes(latestOpenKey)) {
+      dispatch(handleOpenkeys(copyKey))
     } else {
-      setOpenKeys(latestOpenKey ? [latestOpenKey] : [])
+      dispatch(handleOpenkeys(latestOpenKey ? [latestOpenKey] : []))
     }
   }
 

@@ -1,12 +1,14 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 // Define a type for the slice state
 interface LayoutState {
   collapsed: boolean
+  openKeys: string[]
 }
 
 // Define the initial state using that type
 const initialState: LayoutState = {
   collapsed: true,
+  openKeys: ['/'],
 }
 
 export const layoutSlice = createSlice({
@@ -20,9 +22,15 @@ export const layoutSlice = createSlice({
         collapsed: !state.collapsed,
       }
     },
+    handleOpenkeys: (state, action: PayloadAction<string[]>) => {
+      return {
+        ...state,
+        openKeys: action.payload,
+      }
+    },
   },
 })
 
-export const { handleCollapsed } = layoutSlice.actions
+export const { handleCollapsed, handleOpenkeys } = layoutSlice.actions
 
 export default layoutSlice.reducer
