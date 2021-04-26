@@ -11,7 +11,7 @@ import { basename } from './src/utils/global'
 const themeVariables = lessToJS(fs.readFileSync(path.resolve(__dirname, './src/style/antd-variables.less'), 'utf8'))
 
 export default defineConfig({
-  base: basename,
+  base: `/${basename}/`,
   plugins: [
     reactRefresh(),
     styleImport({
