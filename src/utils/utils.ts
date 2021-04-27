@@ -1,4 +1,4 @@
-export const routeFlat = (arr: RouteObj[]) => {
+export const routeFlat = (arr: RouteObj[]): RouteObj[] => {
   const result: RouteObj[] = []
   ;(function flat(arr: RouteObj[]) {
     arr.forEach((item) => {
