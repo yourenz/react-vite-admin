@@ -5,7 +5,6 @@ import { useHistory, useLocation } from 'react-router-dom'
 import routes from '@/route'
 import { useAppDispatch, useAppSelector } from '@/store'
 import { handleOpenkeys } from '@/store/reducer/layoutReducer'
-import { basename } from '@/utils/global'
 
 import styles from './index.module.scss'
 
@@ -32,7 +31,6 @@ const SideBar = (): JSX.Element => {
 
   const handleClick = (item: RouteObj) => {
     if (item.path === pathname) return
-    window.document.title = `${item.name} | ${basename}`
     history.push(item.path)
   }
 

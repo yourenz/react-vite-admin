@@ -4,6 +4,7 @@ import lessToJS from 'less-vars-to-js'
 import path from 'path'
 import { defineConfig } from 'vite'
 import viteCompression from 'vite-plugin-compression'
+import { injectHtml, minifyHtml } from 'vite-plugin-html'
 import styleImport from 'vite-plugin-style-import'
 
 import { basename } from './src/utils/global'
@@ -24,6 +25,12 @@ export default defineConfig({
           },
         },
       ],
+    }),
+    minifyHtml(),
+    injectHtml({
+      injectData: {
+        title: basename,
+      },
     }),
     // gizp
     viteCompression(),
