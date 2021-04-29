@@ -10,7 +10,6 @@ interface LoginInfo {
 }
 
 const Login: React.FC = (): JSX.Element => {
-  const [form] = Form.useForm()
   const { replace } = useHistory()
 
   const onFinish = (values: LoginInfo): void => {
@@ -26,7 +25,7 @@ const Login: React.FC = (): JSX.Element => {
     <div className={styles.container}>
       <div className={styles.loginView}>
         <SmileTwoTone className={styles.logo} />
-        <Form form={form} onFinish={onFinish} initialValues={{ remember: true }}>
+        <Form onFinish={onFinish} initialValues={{ remember: true }}>
           <Form.Item
             name='userName'
             rules={[{ required: true, message: 'Please input your username!' }]}
