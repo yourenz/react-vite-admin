@@ -31,14 +31,14 @@ const Login: React.FC = (): JSX.Element => {
             rules={[{ required: true, message: 'Please input your username!' }]}
             className={styles.formItemView}
           >
-            <Input placeholder='UserName' className={styles.inputView} />
+            <Input placeholder='any' className={styles.inputView} />
           </Form.Item>
           <Form.Item
             name='password'
             rules={[{ required: true, message: 'Please input your password!' }]}
             className={styles.formItemView}
           >
-            <Input.Password placeholder='Password' className={styles.inputView} />
+            <Input.Password placeholder='any' className={styles.inputView} />
           </Form.Item>
           <Form.Item name='remember' valuePropName='checked' className={styles.formItemView}>
             <Checkbox>remember me?</Checkbox>
