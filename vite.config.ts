@@ -6,6 +6,7 @@ import { defineConfig } from 'vite'
 import viteCompression from 'vite-plugin-compression'
 import { injectHtml, minifyHtml } from 'vite-plugin-html'
 import styleImport from 'vite-plugin-style-import'
+import viteSvgIcons from 'vite-plugin-svg-icons'
 
 import { basename } from './src/utils/global'
 
@@ -38,6 +39,10 @@ export default defineConfig({
     viteCompression({
       ext: '.br',
       algorithm: 'brotliCompress',
+    }),
+    viteSvgIcons({
+      iconDirs: [path.resolve(process.cwd(), 'src/icons')],
+      symbolId: 'icon-[dir]-[name]',
     }),
   ],
   css: {

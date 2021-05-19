@@ -5,6 +5,7 @@ const route: RouteObj[] = [
     name: 'dashboard',
     path: '/',
     component: lazy(() => import('@/views/dashboard')),
+    iconName: 'dashboard',
   },
   {
     name: '404',

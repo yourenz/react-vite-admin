@@ -2,6 +2,7 @@ import { HomeOutlined } from '@ant-design/icons'
 import { Layout, Menu } from 'antd'
 import { useHistory, useLocation } from 'react-router-dom'
 
+import SvgIcon from '@/components/SvgIcon'
 import routes from '@/route'
 import { useAppDispatch, useAppSelector } from '@/store'
 import { handleOpenkeys } from '@/store/reducer/layoutReducer'
@@ -38,13 +39,28 @@ const SideBar = (): JSX.Element => {
     return menuData.map((item) => {
       if (!item.children?.length) {
         return (
-          <Menu.Item key={item.path} icon={<HomeOutlined />} onClick={() => handleClick(item)}>
+          <Menu.Item
+            key={item.path}
+            icon={
+              <span>
+                <SvgIcon name={item.iconName || ''} />
+              </span>
+            }
+            onClick={() => handleClick(item)}
+          >
             {item.name}
           </Menu.Item>
         )
       } else {
         return (
-          <SubMenu key={item.path} title={item.name} icon={<HomeOutlined />}>
+          <SubMenu
+            key={item.path}
+            icon={
+              <span>
+                <SvgIcon name={item.iconName || ''} />
+              </span>
+            }
+          >
             {deepRoute(item.children)}
           </SubMenu>
         )
