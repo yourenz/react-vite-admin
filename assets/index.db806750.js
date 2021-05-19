@@ -1,1 +1,0 @@
-import{k as e,r as t,E as a,B as r}from"./vendor.4d3cd3cf.js";export default()=>{const{replace:s}=e();return t.createElement("div",{className:"spin-main"},t.createElement(a,{status:"404",title:"404",subTitle:"Sorry, the page you visited does not exist.",extra:t.createElement(r,{type:"primary",onClick:()=>{s("/")}},"Back Home")}))};
