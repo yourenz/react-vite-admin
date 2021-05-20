@@ -11,7 +11,7 @@
     "postinstall": "husky install",
     "prepublishOnly": "pinst --disable",
     "postpublish": "pinst --enable",
-    "lint:fix": "eslint ./src --ext .jsx,.js,.ts,.tsx --quiet --fix --ignore-path ./.gitignore",
+    "lint:fix": "eslint ./src --ext .jsx,.js,.ts,.tsx --quiet --fix --ignore-path ./.eslintignore",
     "lint:format": "prettier  --loglevel warn --write \"./**/*.{js,jsx,ts,tsx,css,md,json,scss,less}\" ",
     "lint": "yarn lint:format && yarn lint:fix"
   },
