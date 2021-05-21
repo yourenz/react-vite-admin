@@ -16,7 +16,7 @@
     "lint": "yarn lint:format && yarn lint:fix"
   },
   "lint-staged": {
-    "*.{ts,tsx}": "yarn lint"
+    "*.{ts,tsx,js}": "yarn lint"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.5.1",
