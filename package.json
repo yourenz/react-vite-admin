@@ -11,12 +11,13 @@
     "postinstall": "husky install",
     "prepublishOnly": "pinst --disable",
     "postpublish": "pinst --enable",
-    "lint:fix": "eslint ./src --ext .ts,.tsx,js --quiet --fix --ignore-path ./.eslintignore",
-    "lint:format": "prettier  --loglevel warn --write \"./**/*.{ts,tsx,js}\"",
+    "lint:fix": "eslint --cache --fix",
+    "lint:format": "prettier --write .",
     "lint": "yarn lint:format && yarn lint:fix"
   },
   "lint-staged": {
-    "*.{ts,tsx,js}": "yarn lint"
+    "*.{ts,tsx,js}": "yarn lint:fix",
+    "*.{ts,tsx,js,html,css,scss,less,md,json}": "yarn lint:format"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.5.1",
