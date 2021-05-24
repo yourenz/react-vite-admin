@@ -55,8 +55,9 @@ const SideBar = (): JSX.Element => {
         return (
           <SubMenu
             key={item.path}
+            title={item.name}
             icon={
-              <span>
+              <span className='ant-menu-item-icon'>
                 <SvgIcon name={item.iconName || ''} />
               </span>
             }
