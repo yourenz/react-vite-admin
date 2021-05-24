@@ -1,4 +1,3 @@
-import { HomeOutlined } from '@ant-design/icons'
 import { Layout, Menu } from 'antd'
 import { useHistory, useLocation } from 'react-router-dom'
 

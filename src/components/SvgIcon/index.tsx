@@ -9,9 +9,7 @@ interface Props {
 const SvgIcon = (props: Props): JSX.Element => {
   const { prefix = 'icon', name, color = '#009aff' } = props
 
-  const symbolId = useMemo(() => {
-    return `#${prefix}-${name}`
-  }, [name, prefix])
+  const symbolId = useMemo<string>(() => `#${prefix}-${name}`, [name, prefix])
 
   return (
     <svg aria-hidden='true' style={{ width: '1em', height: '1em' }}>
