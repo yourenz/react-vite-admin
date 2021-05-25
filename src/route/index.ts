@@ -7,12 +7,6 @@ const route: RouteObj[] = [
     component: lazy(() => import('@/views/dashboard')),
     iconName: 'dashboard',
   },
-  {
-    name: '404',
-    path: '/404',
-    component: lazy(() => import('@/components/NoMatch')),
-    hidden: true,
-  },
 ]
 
 export default route

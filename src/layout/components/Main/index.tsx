@@ -2,6 +2,8 @@ import { Layout, Spin } from 'antd'
 import { Suspense } from 'react'
 import { Redirect, Route, Switch } from 'react-router-dom'
 
+import NoAuth from '@/components/NoAuth'
+import NoMatch from '@/components/NoMatch'
 import routes from '@/route'
 import { useAppSelector } from '@/store'
 import { routeFlat } from '@/utils/utils'
@@ -29,6 +31,8 @@ const Main = (): JSX.Element => {
               {routeFlat(routes).map((route) => (
                 <Route key={route.path} path={route.path} component={route.component} exact />
               ))}
+              <Route key={'/404'} path={'/404'} component={NoMatch} exact />
+              <Route key={'/403'} path={'/403'} component={NoAuth} exact />
               <Route
                 path='*'
                 render={({ location }) => (
