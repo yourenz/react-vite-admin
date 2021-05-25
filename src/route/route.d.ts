@@ -3,6 +3,5 @@ interface RouteObj {
   path: string
   component?: React.ComponentType
   children?: RouteObj[]
-  hidden?: boolean
   iconName?: string
 }

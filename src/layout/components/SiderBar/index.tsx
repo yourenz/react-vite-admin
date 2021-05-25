@@ -12,8 +12,7 @@ const { Sider } = Layout
 const { SubMenu } = Menu
 
 const SideBar = (): JSX.Element => {
-  const filterRoute = routes.filter((item) => !item.hidden)
-  const rootSubmenuKeys = filterRoute.map((item) => item.path)
+  const rootSubmenuKeys = routes.map((item) => item.path)
   const history = useHistory()
   const { pathname } = useLocation()
   const { collapsed, openKeys } = useAppSelector((state) => state.layoutReducer)
@@ -72,7 +71,7 @@ const SideBar = (): JSX.Element => {
     <Sider className={styles.layoutSidebar} trigger={null} collapsible collapsed={collapsed}>
       <div className={styles.logo} />
       <Menu theme='dark' mode='inline' openKeys={openKeys} selectedKeys={[pathname]} onOpenChange={onOpenChange}>
-        {deepRoute(filterRoute)}
+        {deepRoute(routes)}
       </Menu>
     </Sider>
   )
