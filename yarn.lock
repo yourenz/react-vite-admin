@@ -391,10 +391,10 @@
     "@types/history" "*"
     "@types/react" "*"
 
-"@types/react@*", "@types/react@^17.0.0":
-  version "17.0.3"
-  resolved "https://registry.npm.taobao.org/@types/react/download/@types/react-17.0.3.tgz?cache=0&sync_timestamp=1615114060788&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40types%2Freact%2Fdownload%2F%40types%2Freact-17.0.3.tgz#ba6e215368501ac3826951eef2904574c262cc79"
-  integrity sha1-um4hU2hQGsOCaVHu8pBFdMJizHk=
+"@types/react@*", "@types/react@^17.0.8":
+  version "17.0.8"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.8.tgz#fe76e3ba0fbb5602704110fd1e3035cf394778e3"
+  integrity sha512-3sx4c0PbXujrYAKwXxNONXUtRp9C+hE2di0IuxFyf5BELD+B+AXL8G7QrmSKhVwKZDbv0igiAjQAMhXj8Yg3aw==
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
