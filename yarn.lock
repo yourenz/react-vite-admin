@@ -4314,12 +4314,12 @@ vary@^1:
   resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
   integrity sha1-IpnwLG3tMNSllhsLn3RSShj2NPw=
 
-vite-plugin-compression@^0.2.4:
-  version "0.2.4"
-  resolved "https://registry.npm.taobao.org/vite-plugin-compression/download/vite-plugin-compression-0.2.4.tgz#815d3708379f2eb6c2137b5bfcf40d58f6dc82b0"
-  integrity sha1-gV03CDefLrbCE3tb/PQNWPbcgrA=
+vite-plugin-compression@^0.2.5:
+  version "0.2.5"
+  resolved "https://registry.yarnpkg.com/vite-plugin-compression/-/vite-plugin-compression-0.2.5.tgz#48a0e61a1f62b54294382badd0833acb7338fbfd"
+  integrity sha512-1tivHG6Jicm7jxPI+f+IcgLHMc+egoJU7zeHsCY/kg7imfyWWxJpfiueT0hdlU5i9q8UlkbFCp1z4x+Pzf2AWg==
   dependencies:
-    chalk "^4.1.0"
+    chalk "^4.1.1"
     debug "^4.3.2"
     fs-extra "^9.1.0"
 
