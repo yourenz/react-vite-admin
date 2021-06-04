@@ -4377,10 +4377,10 @@ vite-plugin-html@^2.0.7:
     fs-extra "^9.1.0"
     html-minifier-terser "^5.1.1"
 
-vite-plugin-style-import@^0.10.0:
-  version "0.10.0"
-  resolved "https://registry.nlark.com/vite-plugin-style-import/download/vite-plugin-style-import-0.10.0.tgz?cache=0&sync_timestamp=1619147201283&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fvite-plugin-style-import%2Fdownload%2Fvite-plugin-style-import-0.10.0.tgz#f348ca95b72cdaa212a98c2d4da0dfbf70584165"
-  integrity sha1-80jKlbcs2qISqYwtTaDfv3BYQWU=
+vite-plugin-style-import@^0.10.1:
+  version "0.10.1"
+  resolved "https://registry.yarnpkg.com/vite-plugin-style-import/-/vite-plugin-style-import-0.10.1.tgz#8732d2c04c92b7e13a7afddcb8e4a34f289fc17c"
+  integrity sha512-3P7Jyf5+b1p26t6mOd6yn8ATNPTDGDRkE19aHicFpo3K7Of7ouJabiPfWE4QaicO6grtCfWGQ0SGMAPqxUSdRA==
   dependencies:
     "@rollup/pluginutils" "^4.1.0"
     change-case "^4.1.2"
