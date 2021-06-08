@@ -20,7 +20,7 @@
     "*.{ts,tsx,js,html,css,scss,less,md,json}": "yarn lint:format"
   },
   "dependencies": {
-    "@reduxjs/toolkit": "^1.5.1",
+    "@reduxjs/toolkit": "^1.6.0",
     "antd": "^4.16.2",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
