@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "homepage": "https://yourenz.github.io/react-vite-admin",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "build": "tsc && vite build",
     "serve": "vite preview",
     "type-check": "tsc",
