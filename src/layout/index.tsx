@@ -1,4 +1,3 @@
-import { Layout } from 'antd'
 import { useEffect } from 'react'
 import { Redirect, Route, Switch } from 'react-router-dom'
 import { useLocation } from 'react-router-dom'
@@ -8,19 +7,36 @@ import { basename } from '@/utils/global'
 import { routeFlat } from '@/utils/utils'
 import Login from '@/views/login'
 
-import Main from './components/Main/index'
-import SideBar from './components/SiderBar'
+import Container from './components/Container'
+
+const whiteList = [
+  {
+    path: '/login',
+    title: '登录',
+  },
+  {
+    path: '/403',
+    title: '403',
+  },
+  {
+    path: '/404',
+    title: '404',
+  },
+]
+
+const whiteListPath = whiteList.map((item) => item.path)
 
 const Layouts: React.FC = (): JSX.Element => {
   const flatRoute = routeFlat(routes)
   const { pathname } = useLocation()
 
   useEffect(() => {
-    if (pathname === '/login') {
-      window.document.title = `login | ${basename}`
+    if (whiteListPath.includes(pathname)) {
+      const routeIndex = whiteListPath.findIndex((item) => item === pathname)
+      window.document.title = `${whiteList[routeIndex].title} | ${basename}`
       return
     }
-    window.document.title = `${flatRoute.find((item) => item.path === pathname)?.name} | ${basename}` || basename
+    window.document.title = `${flatRoute.find((item) => item.path === pathname)?.name} | ${basename}`
   }, [flatRoute, pathname])
 
   const handleRouteRender = () => {
@@ -51,10 +67,7 @@ const Layouts: React.FC = (): JSX.Element => {
       <Route
         render={({ location }) =>
           handleRouteRender() ? (
-            <Layout style={{ height: '100%' }}>
-              <SideBar />
-              <Main />
-            </Layout>
+            <Container />
           ) : (
             <Redirect
               to={{
