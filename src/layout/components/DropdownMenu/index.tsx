@@ -17,7 +17,9 @@ const DropdownMenu = (): JSX.Element => {
   const renderMenu = () => {
     return (
       <Menu>
-        <Menu.Item onClick={handleLogOut}>log out</Menu.Item>
+        <Menu.Item key='logout' onClick={handleLogOut}>
+          log out
+        </Menu.Item>
       </Menu>
     )
   }

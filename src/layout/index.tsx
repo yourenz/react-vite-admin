@@ -1,44 +1,12 @@
-import { useEffect } from 'react'
 import { Redirect, Route, Switch } from 'react-router-dom'
-import { useLocation } from 'react-router-dom'
 
-import routes from '@/route'
-import { basename } from '@/utils/global'
-import { routeFlat } from '@/utils/utils'
+import useWindowTitle from '@/hooks/useWindowTitle'
 import Login from '@/views/login'
 
 import Container from './components/Container'
 
-const whiteList = [
-  {
-    path: '/login',
-    title: '登录',
-  },
-  {
-    path: '/403',
-    title: '403',
-  },
-  {
-    path: '/404',
-    title: '404',
-  },
-]
-
-const whiteListPath = whiteList.map((item) => item.path)
-
 const Layouts: React.FC = (): JSX.Element => {
-  const flatRoute = routeFlat(routes)
-  const { pathname } = useLocation()
-
-  useEffect(() => {
-    if (whiteListPath.includes(pathname)) {
-      const routeIndex = whiteListPath.findIndex((item) => item === pathname)
-      window.document.title = `${whiteList[routeIndex].title} | ${basename}`
-      return
-    }
-    window.document.title = `${flatRoute.find((item) => item.path === pathname)?.name} | ${basename}`
-  }, [flatRoute, pathname])
-
+  useWindowTitle()
   const handleRouteRender = () => {
     if (localStorage.getItem('token')) {
       return localStorage.getItem('token')
