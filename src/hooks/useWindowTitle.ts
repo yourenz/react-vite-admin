@@ -7,7 +7,7 @@ import { routeFlat } from '@/utils/utils'
 const whiteList = [
   {
     path: '/login',
-    title: '登录',
+    title: 'login',
   },
   {
     path: '/403',
