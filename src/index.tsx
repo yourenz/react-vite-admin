@@ -1,4 +1,4 @@
-import 'vite-plugin-svg-icons/register'
+import 'virtual:svg-icons-register';
 
 import ReactDOM from 'react-dom'
 
