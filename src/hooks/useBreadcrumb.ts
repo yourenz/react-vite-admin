@@ -1,7 +1,13 @@
 import { useLocation } from 'react-router-dom'
 
 import routes from '@/route'
+import { basename } from '@/utils/global'
 import { routeFlatWithFather } from '@/utils/utils'
+
+const index = {
+  path: `/${basename}/`,
+  name: 'dashborad',
+}
 
 const useBreadcrumb = (): RouteObj[] => {
   const { pathname } = useLocation()
@@ -12,7 +18,7 @@ const useBreadcrumb = (): RouteObj[] => {
     .map((item) => '/' + item)
 
   if (!pathArr.length) {
-    return [routes[0]]
+    return [index]
   }
 
   const currentRoute = routes.filter((item) => item.path === pathArr[0])
@@ -31,7 +37,7 @@ const useBreadcrumb = (): RouteObj[] => {
     }
   })
 
-  const BreadcrumbArr = [routes[0], ...newRoute.filter((item) => pathArr.includes(item.lastPath))]
+  const BreadcrumbArr = [index, ...newRoute.filter((item) => pathArr.includes(item.lastPath))]
 
   return BreadcrumbArr
 }
