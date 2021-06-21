@@ -5,7 +5,7 @@ import { useHistory, useLocation } from 'react-router-dom'
 
 import routes from '@/route'
 import { useAppSelector } from '@/store'
-import type { TagsView } from '@/store/reducer/layoutReducer'
+import { handleOpenkeys, TagsView } from '@/store/reducer/layoutReducer'
 import { handleTagsView } from '@/store/reducer/layoutReducer'
 import { filterObject, routeFlatWithFather } from '@/utils/utils'
 
@@ -35,14 +35,13 @@ const useTagsView = (): UseTagsView => {
 
   const pushTag = (path: string) => {
     const isHave = tagsView.find((item) => item.path === path)
-
+    const pathArr = pathname
+      .split('/')
+      .filter((item) => item)
+      .map((item) => '/' + item)
     if (isHave) {
       dispatch(handleTagsView(handleTagsData(path)))
     } else {
-      const pathArr = pathname
-        .split('/')
-        .filter((item) => item)
-        .map((item) => '/' + item)
       const currentRoute = routes.filter((item) => item.path === pathArr[0])
       const flatRoute = routeFlatWithFather(currentRoute)
       const item = flatRoute.filter((item) => item.path === pathname)
@@ -53,6 +52,7 @@ const useTagsView = (): UseTagsView => {
       }
       dispatch(handleTagsView([...handleTagsData(path), tagObj]))
     }
+    dispatch(handleOpenkeys([pathArr[0]]))
   }
 
   const deleteTag = (e: React.MouseEvent<HTMLElement>, tag: TagsView) => {
