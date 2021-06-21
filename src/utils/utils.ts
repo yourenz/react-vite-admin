@@ -25,3 +25,14 @@ export const routeFlatWithFather = (arr: RouteObj[]): RouteObj[] => {
   })(arr)
   return result
 }
+
+// eslint-disable-next-line @typescript-eslint/ban-types
+export const filterObject = <T extends object, U extends keyof T>(obj: T, arr: Array<U>): Pick<T, U> => {
+  const result = {} as Pick<T, U>
+  Object.keys(obj)
+    .filter((item) => arr.includes(item as U))
+    .forEach((item) => {
+      result[item as U] = obj[item as U]
+    })
+  return result
+}
