@@ -2,10 +2,10 @@ import { Layout, Menu } from 'antd'
 import { useHistory, useLocation } from 'react-router-dom'
 
 import SvgIcon from '@/components/SvgIcon'
+import useTagsView from '@/hooks/useTagsView'
 import routes from '@/route'
 import { useAppDispatch, useAppSelector } from '@/store'
 import { handleOpenkeys } from '@/store/reducer/layoutReducer'
-import { filterObject } from '@/utils/utils'
 
 import styles from './index.module.scss'
 
@@ -18,6 +18,7 @@ const SideBar = (): JSX.Element => {
   const { pathname } = useLocation()
   const { collapsed, openKeys } = useAppSelector((state) => state.layoutReducer)
   const dispatch = useAppDispatch()
+  const { pushTag } = useTagsView()
 
   const onOpenChange = (keys: React.Key[]): void => {
     const copyKey = keys as string[]
@@ -31,8 +32,7 @@ const SideBar = (): JSX.Element => {
 
   const handleClick = (item: RouteObj) => {
     if (item.path === pathname) return
-    const items = filterObject<RouteObj, 'path' | 'name'>(item, ['path', 'name'])
-    console.log(items)
+    pushTag(item)
     history.push(item.path)
   }
 
