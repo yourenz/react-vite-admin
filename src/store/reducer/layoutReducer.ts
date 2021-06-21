@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import { basename } from '@/utils/global'
 // Define a type for the slice state
 type FilterTag = Pick<RouteObj, 'name' | 'path'>
 
