@@ -66,6 +66,9 @@ const useTagsView = (): UseTagsView => {
 
   const clickTag = (tag: RouteObj) => {
     dispatch(handleTagsView(handleTagsData(tag.path)))
+    if (pathname === tag.path) {
+      return
+    }
     history.push(tag.path)
   }
 
