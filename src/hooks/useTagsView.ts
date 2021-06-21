@@ -3,21 +3,21 @@ import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { useHistory, useLocation } from 'react-router-dom'
 
+import routes from '@/route'
 import { useAppSelector } from '@/store'
 import type { TagsView } from '@/store/reducer/layoutReducer'
 import { handleTagsView } from '@/store/reducer/layoutReducer'
-import { filterObject } from '@/utils/utils'
+import { filterObject, routeFlatWithFather } from '@/utils/utils'
 
 interface UseTagsView {
   tagsView: TagsView[]
-  pushTag: (tag: RouteObj) => void
   deleteTag: (e: React.MouseEvent<HTMLElement>, tag: TagsView) => void
   clickTag: (tag: RouteObj) => void
 }
 const useTagsView = (): UseTagsView => {
   const { pathname } = useLocation()
   useEffect(() => {
-    dispatch(handleTagsView(handleTagsData(pathname)))
+    pushTag(pathname)
   }, [pathname])
 
   const dispatch = useDispatch()
@@ -33,18 +33,25 @@ const useTagsView = (): UseTagsView => {
     })
   }
 
-  const pushTag = (tag: RouteObj) => {
-    const isHave = tagsView.find((item) => item.path === tag.path)
+  const pushTag = (path: string) => {
+    const isHave = tagsView.find((item) => item.path === path)
 
     if (isHave) {
-      dispatch(handleTagsView(handleTagsData(tag.path)))
+      dispatch(handleTagsView(handleTagsData(path)))
     } else {
-      const item = filterObject<RouteObj, 'path' | 'name'>(tag, ['path', 'name'])
+      const pathArr = pathname
+        .split('/')
+        .filter((item) => item)
+        .map((item) => '/' + item)
+      const currentRoute = routes.filter((item) => item.path === pathArr[0])
+      const flatRoute = routeFlatWithFather(currentRoute)
+      const item = flatRoute.filter((item) => item.path === pathname)
+      const filterItem = filterObject<RouteObj, 'path' | 'name'>(item[0], ['path', 'name'])
       const tagObj = {
-        ...item,
+        ...filterItem,
         active: true,
       }
-      dispatch(handleTagsView([...handleTagsData(tag.path), tagObj]))
+      dispatch(handleTagsView([...handleTagsData(path), tagObj]))
     }
   }
 
@@ -63,7 +70,6 @@ const useTagsView = (): UseTagsView => {
   }
 
   return {
-    pushTag,
     deleteTag,
     clickTag,
     tagsView,
