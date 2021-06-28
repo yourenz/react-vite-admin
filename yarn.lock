@@ -4348,10 +4348,10 @@ vite-plugin-style-import@^1.0.1:
     es-module-lexer "^0.6.0"
     magic-string "^0.25.7"
 
-vite-plugin-svg-icons@^0.7.1:
-  version "0.7.1"
-  resolved "https://registry.yarnpkg.com/vite-plugin-svg-icons/-/vite-plugin-svg-icons-0.7.1.tgz#35d4f2818c13a34a4a68884db537f0b8c2e1f174"
-  integrity sha512-yUUxIrXnsJLtYiaw3/ad7D1r/A9ULYirlE7lphcBUWWTKAy5nJ3JJO2XLcr9PuymApkt1oohkHHq5MVMu4+aeg==
+vite-plugin-svg-icons@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/vite-plugin-svg-icons/-/vite-plugin-svg-icons-1.0.0.tgz#f2bd610a604972570dff322b2844eaecfc6c1678"
+  integrity sha512-8cE1f7diQoU2VyHiXgeS52y5EOVPgvI0nJNUjfg/60IL0xIuZy2BCv4Pb2PCMRvY6JWa9DBkhn1qfJGMNBDLOw==
   dependencies:
     "@types/svgo" "^2.3.0"
     cors "^2.8.5"
