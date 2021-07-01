@@ -39,8 +39,11 @@ const useTagsView = (): UseTagsView => {
       .filter((item) => item)
       .map((item) => '/' + item)
 
-    if (!pathArr.length) return
-
+    if (!pathArr.length) {
+      dispatch(handleTagsView(handleTagsData('/')))
+      return
+    }
+    
     const isHave = tagsView.find((item) => item.path === path)
 
     if (isHave) {
