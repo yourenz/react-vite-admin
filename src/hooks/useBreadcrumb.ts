@@ -1,7 +1,7 @@
 import { useLocation } from 'react-router-dom'
 
 import routes from '@/route'
-import { basename } from '@/utils/global'
+import { basename } from '@/utils/config'
 import { routeFlatWithFather } from '@/utils/utils'
 
 const index = {
