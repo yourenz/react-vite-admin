@@ -7,6 +7,7 @@ import routes from '@/route'
 import { useAppSelector } from '@/store'
 import { handleOpenkeys, TagsView } from '@/store/reducer/layoutReducer'
 import { handleTagsView } from '@/store/reducer/layoutReducer'
+import { routeWhiteList } from '@/utils/config'
 import { filterObject, routeFlatWithFather } from '@/utils/utils'
 
 interface UseTagsView {
@@ -14,9 +15,14 @@ interface UseTagsView {
   deleteTag: (e: React.MouseEvent<HTMLElement>, tag: TagsView) => void
   clickTag: (tag: RouteObj) => void
 }
+
+const whiteListPath = routeWhiteList.map((item) => item.path)
+
 const useTagsView = (): UseTagsView => {
   const { pathname } = useLocation()
+
   useEffect(() => {
+    if (whiteListPath.includes(pathname)) return
     pushTag(pathname)
   }, [pathname])
 
@@ -43,7 +49,7 @@ const useTagsView = (): UseTagsView => {
       dispatch(handleTagsView(handleTagsData('/')))
       return
     }
-    
+
     const isHave = tagsView.find((item) => item.path === path)
 
     if (isHave) {
