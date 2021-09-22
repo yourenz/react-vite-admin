@@ -8,7 +8,7 @@ import { injectHtml, minifyHtml } from 'vite-plugin-html'
 import styleImport from 'vite-plugin-style-import'
 import viteSvgIcons from 'vite-plugin-svg-icons'
 
-import { basename } from './src/utils/global'
+import { basename } from './src/utils/config'
 
 const themeVariables = lessToJS(fs.readFileSync(path.resolve(__dirname, './src/style/antd-variables.less'), 'utf8'))
 
@@ -22,7 +22,7 @@ export default defineConfig({
           libraryName: 'antd',
           esModule: true,
           resolveStyle: (name) => {
-            return `antd/es/${name}/style/index`
+            return `../antd/es/${name}/style/index`
           },
         },
       ],
